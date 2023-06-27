@@ -1,0 +1,13 @@
+<p>notification works!</p>
+<h4 class="modal-title">{{data.title}}</h4>
+<button mat-icon-button class="btn-close" aria-label="Close" (click)="onClose()">
+  <mat-icon>close</mat-icon>
+</button>
+
+<div class="modal-body">
+  {{data.message}}
+</div>
+
+<div class="modal-footer">
+  <button mat-button color="primary" (click)="onClose()">Ok</button>
+</div>

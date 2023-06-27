@@ -1,0 +1,39 @@
+
+   <div class="vertical-tabs-container">
+    <mat-tab-group>
+      <mat-tab *ngFor="let matchGroup of matchGroups">
+        <ng-template mat-tab-label>
+          {{ matchGroup.key | dateformat }}
+        </ng-template>
+        <div class="match-cards-container">
+          <mat-card *ngFor="let match of matchGroup.items" (click)="expandMatch(match)" class="match-card">
+            <mat-card-header>
+              <mat-card-title>{{ match.competitionName }}</mat-card-title>
+              <mat-card-subtitle>{{ match.homeTeamName }} vs {{ match.guestTeamName }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <!-- Add basic match details here -->
+              <p>Stadium: {{ match.stadiumName }}</p>
+              <p>Match Type: {{ match.matchType }}</p>
+              <!-- Add more match details as needed -->
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  
+  <mat-expansion-panel *ngIf="expandedMatch" (closed)="collapseMatch()" class="topmargin">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ expandedMatch.competitionName }} - {{ expandedMatch.homeTeamName }} vs {{ expandedMatch.guestTeamName }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-panel-description>
+      <!-- Display additional match details here -->
+      <p>Stadium: {{ expandedMatch.stadiumName }}</p>
+      <p>Match Type: {{ expandedMatch.matchType }}</p>
+      <!-- Add more detailed match information as needed -->
+    </mat-panel-description>
+  </mat-expansion-panel>
+  

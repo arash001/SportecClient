@@ -1,0 +1,69 @@
+<section class="section-button">
+  <div class="button-row">
+    <app-dynamic-drop-down [matchDays]="dataSourceMatchDay" (selectedMatchDay)="OnSelectmatchday($event)">
+    </app-dynamic-drop-down>
+
+    <button mat-raised-button  (click)="sortDataSource('plannedKickoffTime', 'asc')">ASC</button>
+    <button mat-raised-button  (click)="sortDataSource('plannedKickoffTime', 'desc')">
+      DESC
+    </button>
+
+    <button mat-raised-button  (click)="onSearch()">Search</button>
+    <button mat-raised-button  (click)="onSave()">Save</button>
+  </div>
+</section>
+
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <!-- Display the columns using matColumnDef directive -->
+  <ng-container matColumnDef="competitionName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by competition"> Competition </th>
+    <td mat-cell *matCellDef="let fixture"> {{ fixture.competitionName }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="homeTeamName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Home Team </th>
+    <td mat-cell *matCellDef="let fixture"> {{ fixture.homeTeamName }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="guestTeamName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Guest Team </th>
+    <td mat-cell *matCellDef="let fixture"> {{ fixture.guestTeamName }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="matchDay">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Match Day </th>
+    <td mat-cell *matCellDef="let fixture"> {{ fixture.matchDay }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="plannedKickoffTime">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortKickTime()"> Planned Kick off Time </th>
+    <td mat-cell *matCellDef="let fixture"> {{ fixture.plannedKickoffTime |dateformat }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="season">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Season </th>
+    <td mat-cell *matCellDef="let fixture"> {{ fixture.season }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="stadiumName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Stadium </th>
+    <td mat-cell *matCellDef="let fixture"> {{ fixture.stadiumName }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="startDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </th>
+    <td mat-cell *matCellDef="let fixture"> {{ fixture.startDate | dateformat }} </td>
+  </ng-container>
+
+  <!-- Assign the matColumnDef values to the displayedColumns array -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons [length]="dataSource.data.length"
+  [pageSize]="pageSize" [pageIndex]="pageIndex"></mat-paginator>
+
+
+<app-fixture-details *ngIf="dataSource" [matches]="dataSourceFixture"></app-fixture-details>

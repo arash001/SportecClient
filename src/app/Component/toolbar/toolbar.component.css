@@ -1,0 +1,45 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+  
+  
+  .mat-tab-group {
+    margin-bottom: 48px;
+  }
+  
+  .tab {
+    align-items: center;
+  }
+  
+  a{
+      color: aliceblue;
+  }
+
+  :host {
+    display: block;
+    padding: 16px;
+  }
+  
+  .router-content {
+    margin-top: 16px;
+  }
+  
+  .logo-image {
+    max-width: 50%;
+    max-height: 50%;
+    margin-right: 10px;
+  }
+  

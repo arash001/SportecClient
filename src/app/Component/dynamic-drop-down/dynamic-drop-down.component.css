@@ -1,0 +1,15 @@
+/* .hide {
+    display: none !important;
+  } */
+
+  ::ng-deep .mat-select-panel.custom-mat-select
+{
+  overflow: hidden;
+  max-width: 280px;
+}
+
+::ng-deep .drop mat-form-field,
+::ng-deep .drop mat-select {
+  height: 10px; 
+}
+

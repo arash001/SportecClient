@@ -1,0 +1,28 @@
+<!-- <mat-form-field>
+	<mat-label [innerText]="dataList"></mat-label>
+	<mat-select [formControl]="custonDropdown" (closed)="onPanelClose()">
+
+		<mat-form-field>
+			<input matInput
+             [formControl]="filterControl"
+             type="text"
+             name="filter-options"
+             id="filter-options"
+             placeholder="Search">
+      </mat-form-field>
+			<mat-option *ngFor="let option of filteredOptions | async" [value]="option.name"
+				[ngClass]="{'hide': !option.value}">
+				{{option.name}}
+			</mat-option>
+	</mat-select>
+</mat-form-field> -->
+
+<mat-form-field class="drop">
+	<mat-label>Match Day</mat-label>
+	<mat-select [formControl]="matchDayControl" (selectionChange)="onChanges($event.value)">
+		<mat-option *ngFor="let matchDay of matchDays" [value]="matchDay">
+			{{ matchDay }}
+		</mat-option>
+		<mat-option #allSelected (click)="toggleAllSelection()" [value]="0">All</mat-option>
+	</mat-select>
+</mat-form-field>

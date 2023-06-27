@@ -1,0 +1,27 @@
+<mat-toolbar color="blue">
+  <div class="left-section">
+    <!-- <span>{{title}} </span> -->
+    <img src="assets/logo_sportec.png" alt="Logo" class="logo-image">
+    <a mat-button [routerLink]="'[/]'" style="margin-left: 20px;">
+      <mat-icon>home</mat-icon>
+    </a>
+  </div>
+  <div class="right-section">
+    <a mat-button routerLink="/account/register" style="margin-left: 20px;" *ngIf="!isLoggedIn()">
+      <mat-icon>person</mat-icon>{{"Register"}}
+    </a>
+
+    <a mat-button routerLink="/account/login" style="margin-left: 20px;" *ngIf="!isLoggedIn()">
+      <mat-icon>login</mat-icon>{{"Login"}}
+    </a>
+    <a mat-button (click)="logout()" style="margin-left: 20px;" *ngIf="isLoggedIn()">
+      <mat-icon>logout</mat-icon> {{"Logout"}}
+    </a>
+    <a mat-button [routerLink]="['about']" style="margin-left: 20px;">
+      <mat-icon>about</mat-icon> {{"About"}} </a>
+
+  </div>
+</mat-toolbar>
+<div class="router-content">
+<router-outlet></router-outlet>
+</div>

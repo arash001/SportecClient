@@ -1,0 +1,39 @@
+.vertical-tabs-container {
+    display: flex;
+  }
+  
+  .mat-tab-group {
+    flex-direction: column;
+  }
+  
+  .mat-tab-header {
+    flex-direction: column;
+  }
+  
+  .vertical-tabs-container {
+    display: flex;
+  }
+  
+  /* .match-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  } */
+  
+  .match-cards-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-top: 45px;
+    justify-content: space-around;
+  }
+  
+  .match-card {
+    flex: 0 0 auto;
+    width: 250px; /* Adjust the width as needed */
+    margin-right: 10px; /* Adjust the margin as needed */
+  }
+  
+  .topmargin{
+    margin-top: 15px;
+  }

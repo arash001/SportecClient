@@ -1,0 +1,12 @@
+.section-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  
+  .button-row {
+    display: flex;
+    gap: 16px;
+
+  }
+  

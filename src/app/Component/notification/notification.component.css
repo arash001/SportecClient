@@ -1,0 +1,19 @@
+.modal-title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+  
+  .btn-close {
+    margin-left: auto;
+  }
+  
+  .modal-body {
+    margin-bottom: 1rem;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
