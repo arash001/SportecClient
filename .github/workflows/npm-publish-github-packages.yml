@@ -1,6 +1,3 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
 name: Node.js Package
 
 on:
@@ -35,14 +32,22 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
+  publish-docker:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v3
-        name: Check out code
-      - uses: mr-smithers-excellent/docker-build-push@v6
-        name: Build & push Docker image
+      - uses: actions/setup-node@v3
         with:
-              image: arashicaros/sporttec
-              tags: v1, latest
-              registry: registry-url.io
-              dockerfile: Dockerfile.ci
-              username: ${{ secrets.DOCKER_USERNAME }}
-              password: ${{ secrets.DOCKER_PASSWORD }}
+          node-version: 16
+
+      # Here, we build and push the Docker image to Docker Hub
+      - name: Build & push Docker image
+        uses: mr-smithers-excellent/docker-build-push@v6
+        with:
+          image: arashicaros/sporttec
+          tags: v1, latest
+          registry: docker.io
+          dockerfile: Dockerfile.ci
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
