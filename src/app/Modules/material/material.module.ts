@@ -24,6 +24,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 const matrialComponents = [
   MatButtonModule,
@@ -48,9 +49,9 @@ const matrialComponents = [
   MatChipsModule,
   MatButtonToggleModule,
   MatBadgeModule,
-
+  MatDialogModule,
   MatSortModule,
-  MatPaginatorModule
+  MatPaginatorModule,
 ];
 
 @NgModule({
@@ -58,6 +59,11 @@ const matrialComponents = [
   imports: [
     matrialComponents
   ],
-  exports: [matrialComponents]
+  exports: [matrialComponents],
+  providers: [
+  //  MatDialog,
+   // MatDialogRef
+  ]
+
 })
 export class MaterialModule { }

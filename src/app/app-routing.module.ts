@@ -3,15 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { FixtureComponent } from './Component/fixture/fixture.component';
 import { HomeComponent } from './Component/home/home.component';
 import { FixtureDetailsComponent } from './Component/fixture-details/fixture-details.component';
+import { AuthorizationGuard } from './Shared/guards/authorization.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  //{ path: 'admin', loadChildren: () => import('./admin/admin.module').then(module => module.AdminModule) },
-  // Implenting lazy loading by the following format
-  { path: 'account', loadChildren: () => import('./Account/account.module').then(module => module.AccountModule) },
-  { path: 'fixture', component: FixtureComponent , children:[
+  { path: '',     runGuardsAndResolvers: 'always',component: HomeComponent,canActivate:[AuthorizationGuard] },
+
+  { path: 'account',     runGuardsAndResolvers: 'always',loadChildren: () => import('./Account/account.module').then(module => module.AccountModule) },
+  { path: 'fixture',     runGuardsAndResolvers: 'always',canActivate:[AuthorizationGuard],component: FixtureComponent , children:[
     {
-      path:'detial', component:FixtureDetailsComponent
+      path:'detial', component:FixtureDetailsComponent,canActivate:[AuthorizationGuard]
     }
   ] },
   { path: '**', redirectTo: 'not-found' },
